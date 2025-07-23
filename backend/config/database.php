@@ -7,6 +7,14 @@ return [
     'default' => 'mysql',
     
     'connections' => [
+        'sqlite' => [
+            'driver' => 'sqlite',
+            'database' => __DIR__ . '/../' . ($_ENV['DB_DATABASE'] ?? 'database.sqlite'),
+            'options' => [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            ],
+        ],
         'mysql' => [
             'driver' => 'mysql',
             'host' => $_ENV['DB_HOST'] ?? 'localhost',

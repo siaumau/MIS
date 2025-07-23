@@ -3,343 +3,82 @@
 > mis-frontend@1.0.0 dev
 > vite
 
-The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
 
-  VITE v5.4.19  ready in 420 ms
+  VITE v5.4.19  ready in 238 ms
 
   ➜  Local:   http://localhost:40000/
   ➜  Network: http://192.168.0.234:40000/
   ➜  Network: http://172.19.80.1:40000/
   ➜  press h + enter to show help
-(node:28836) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///D:/sideproject/MIS/frontend/postcss.config.js is not specified and it doesn't parse as CommonJS.
-Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
-To eliminate this warning, add "type": "module" to D:\sideproject\MIS\frontend\package.json.
-(Use `node --trace-warnings ...` to show where the warning was created)
-Error:   Failed to scan for dependencies from entries:
-  D:/sideproject/MIS/frontend/index.html
-
-  X [ERROR] ENOENT: no such file or directory, open 'D:\sideproject\MIS\frontend\src\views\announcement\AnnouncementDetail.vue' [plugin vite:dep-scan]
-
-    node_modules/esbuild/lib/main.js:1275:21:
-      1275 │         let result = await callback({
-           ╵                      ^
-
-    at async open (node:internal/fs/promises:639:25)
-    at async Object.readFile (node:internal/fs/promises:1243:14)
-    at async htmlTypeOnLoadCallback (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49701:19)
-    at async requestCallbacks.on-load (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1275:22)
-    at async handleRequest (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:647:11)
-
-  This error came from the "onLoad" callback registered here:
-
-    node_modules/esbuild/lib/main.js:1150:20:
-      1150 │       let promise = setup({
-           ╵                     ^
-
-    at setup (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49781:13)
-    at handlePlugins (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1150:21)
-    at buildOrContextImpl (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:873:5)
-    at Object.buildOrContext (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:699:5)
-    at D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:68
-    at new Promise (<anonymous>)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:27)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1874:58)
-    at prepareEsbuildScanner (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49576:24)
-
-  The plugin "vite:dep-scan" was triggered by this import
-
-    src/router/index.js:67:28:
-      67 │ ...nent: () => import('@/views/announcement/AnnouncementDetail.vue'),
-         ╵                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-X [ERROR] ENOENT: no such file or directory, open 'D:\sideproject\MIS\frontend\src\views\announcement\AnnouncementList.vue' [plugin vite:dep-scan]
-
-    node_modules/esbuild/lib/main.js:1275:21:
-      1275 │         let result = await callback({
-           ╵                      ^
-
-    at async open (node:internal/fs/promises:639:25)
-    at async Object.readFile (node:internal/fs/promises:1243:14)
-    at async htmlTypeOnLoadCallback (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49701:19)
-    at async requestCallbacks.on-load (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1275:22)
-    at async handleRequest (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:647:11)
-
-  This error came from the "onLoad" callback registered here:
-
-    node_modules/esbuild/lib/main.js:1150:20:
-      1150 │       let promise = setup({
-           ╵                     ^
-
-    at setup (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49781:13)
-    at handlePlugins (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1150:21)
-    at buildOrContextImpl (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:873:5)
-    at Object.buildOrContext (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:699:5)
-    at D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:68
-    at new Promise (<anonymous>)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:27)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1874:58)
-    at prepareEsbuildScanner (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49576:24)
-
-  The plugin "vite:dep-scan" was triggered by this import
-
-    src/router/index.js:61:28:
-      61 │ ...ponent: () => import('@/views/announcement/AnnouncementList.vue'),
-         ╵                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-X [ERROR] ENOENT: no such file or directory, open 'D:\sideproject\MIS\frontend\src\views\auth\ProfilePage.vue' [plugin vite:dep-scan]
-
-    node_modules/esbuild/lib/main.js:1275:21:
-      1275 │         let result = await callback({
-           ╵                      ^
-
-    at async open (node:internal/fs/promises:639:25)
-    at async Object.readFile (node:internal/fs/promises:1243:14)
-    at async htmlTypeOnLoadCallback (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49701:19)
-    at async requestCallbacks.on-load (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1275:22)
-    at async handleRequest (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:647:11)
-
-  This error came from the "onLoad" callback registered here:
-
-    node_modules/esbuild/lib/main.js:1150:20:
-      1150 │       let promise = setup({
-           ╵                     ^
-
-    at setup (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49781:13)
-    at handlePlugins (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1150:21)
-    at buildOrContextImpl (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:873:5)
-    at Object.buildOrContext (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:699:5)
-    at D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:68
-    at new Promise (<anonymous>)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:27)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1874:58)
-    at prepareEsbuildScanner (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49576:24)
-
-  The plugin "vite:dep-scan" was triggered by this import
-
-    src/router/index.js:73:28:
-      73 │     component: () => import('@/views/auth/ProfilePage.vue'),
-         ╵                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-X [ERROR] ENOENT: no such file or directory, open 'D:\sideproject\MIS\frontend\src\views\equipment\EquipmentDetail.vue' [plugin vite:dep-scan]
-
-    node_modules/esbuild/lib/main.js:1275:21:
-      1275 │         let result = await callback({
-           ╵                      ^
-
-    at async open (node:internal/fs/promises:639:25)
-    at async Object.readFile (node:internal/fs/promises:1243:14)
-    at async htmlTypeOnLoadCallback (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49701:19)
-    at async requestCallbacks.on-load (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1275:22)
-    at async handleRequest (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:647:11)
-
-  This error came from the "onLoad" callback registered here:
-
-    node_modules/esbuild/lib/main.js:1150:20:
-      1150 │       let promise = setup({
-           ╵                     ^
-
-    at setup (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49781:13)
-    at handlePlugins (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1150:21)
-    at buildOrContextImpl (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:873:5)
-    at Object.buildOrContext (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:699:5)
-    at D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:68
-    at new Promise (<anonymous>)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:27)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1874:58)
-    at prepareEsbuildScanner (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49576:24)
-
-  The plugin "vite:dep-scan" was triggered by this import
-
-    src/router/index.js:37:28:
-      37 │     component: () => import('@/views/equipment/EquipmentDetail.vue'),
-         ╵                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-X [ERROR] ENOENT: no such file or directory, open 'D:\sideproject\MIS\frontend\src\views\equipment\EquipmentForm.vue' [plugin vite:dep-scan]
-
-    node_modules/esbuild/lib/main.js:1275:21:
-      1275 │         let result = await callback({
-           ╵                      ^
-
-    at async open (node:internal/fs/promises:639:25)
-    at async Object.readFile (node:internal/fs/promises:1243:14)
-    at async htmlTypeOnLoadCallback (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49701:19)
-    at async requestCallbacks.on-load (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1275:22)
-    at async handleRequest (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:647:11)
-
-  This error came from the "onLoad" callback registered here:
-
-    node_modules/esbuild/lib/main.js:1150:20:
-      1150 │       let promise = setup({
-           ╵                     ^
-
-    at setup (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49781:13)
-    at handlePlugins (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1150:21)
-    at buildOrContextImpl (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:873:5)
-    at Object.buildOrContext (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:699:5)
-    at D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:68
-    at new Promise (<anonymous>)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:27)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1874:58)
-    at prepareEsbuildScanner (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49576:24)
-
-  The plugin "vite:dep-scan" was triggered by this import
-
-    src/router/index.js:31:28:
-      31 │     component: () => import('@/views/equipment/EquipmentForm.vue'),
-         ╵                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-X [ERROR] ENOENT: no such file or directory, open 'D:\sideproject\MIS\frontend\src\views\equipment\EquipmentList.vue' [plugin vite:dep-scan]
-
-    node_modules/esbuild/lib/main.js:1275:21:
-      1275 │         let result = await callback({
-           ╵                      ^
-
-    at async open (node:internal/fs/promises:639:25)
-    at async Object.readFile (node:internal/fs/promises:1243:14)
-    at async htmlTypeOnLoadCallback (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49701:19)
-    at async requestCallbacks.on-load (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1275:22)
-    at async handleRequest (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:647:11)
-
-  This error came from the "onLoad" callback registered here:
-
-    node_modules/esbuild/lib/main.js:1150:20:
-      1150 │       let promise = setup({
-           ╵                     ^
-
-    at setup (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49781:13)
-    at handlePlugins (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1150:21)
-    at buildOrContextImpl (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:873:5)
-    at Object.buildOrContext (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:699:5)
-    at D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:68
-    at new Promise (<anonymous>)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:27)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1874:58)
-    at prepareEsbuildScanner (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49576:24)
-
-  The plugin "vite:dep-scan" was triggered by this import
-
-    src/router/index.js:25:28:
-      25 │     component: () => import('@/views/equipment/EquipmentList.vue'),
-         ╵                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-X [ERROR] ENOENT: no such file or directory, open 'D:\sideproject\MIS\frontend\src\views\repair\RepairDetail.vue' [plugin vite:dep-scan]
-
-    node_modules/esbuild/lib/main.js:1275:21:
-      1275 │         let result = await callback({
-           ╵                      ^
-
-    at async open (node:internal/fs/promises:639:25)
-    at async Object.readFile (node:internal/fs/promises:1243:14)
-    at async htmlTypeOnLoadCallback (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49701:19)
-    at async requestCallbacks.on-load (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1275:22)
-    at async handleRequest (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:647:11)
-
-  This error came from the "onLoad" callback registered here:
-
-    node_modules/esbuild/lib/main.js:1150:20:
-      1150 │       let promise = setup({
-           ╵                     ^
-
-    at setup (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49781:13)
-    at handlePlugins (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1150:21)
-    at buildOrContextImpl (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:873:5)
-    at Object.buildOrContext (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:699:5)
-    at D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:68
-    at new Promise (<anonymous>)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:27)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1874:58)
-    at prepareEsbuildScanner (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49576:24)
-
-  The plugin "vite:dep-scan" was triggered by this import
-
-    src/router/index.js:55:28:
-      55 │     component: () => import('@/views/repair/RepairDetail.vue'),
-         ╵                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-X [ERROR] ENOENT: no such file or directory, open 'D:\sideproject\MIS\frontend\src\views\repair\RepairForm.vue' [plugin vite:dep-scan]
-
-    node_modules/esbuild/lib/main.js:1275:21:
-      1275 │         let result = await callback({
-           ╵                      ^
-
-    at async open (node:internal/fs/promises:639:25)
-    at async Object.readFile (node:internal/fs/promises:1243:14)
-    at async htmlTypeOnLoadCallback (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49701:19)
-    at async requestCallbacks.on-load (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1275:22)
-    at async handleRequest (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:647:11)
-
-  This error came from the "onLoad" callback registered here:
-
-    node_modules/esbuild/lib/main.js:1150:20:
-      1150 │       let promise = setup({
-           ╵                     ^
-
-    at setup (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49781:13)
-    at handlePlugins (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1150:21)
-    at buildOrContextImpl (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:873:5)
-    at Object.buildOrContext (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:699:5)
-    at D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:68
-    at new Promise (<anonymous>)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:27)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1874:58)
-    at prepareEsbuildScanner (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49576:24)
-
-  The plugin "vite:dep-scan" was triggered by this import
-
-    src/router/index.js:49:28:
-      49 │     component: () => import('@/views/repair/RepairForm.vue'),
-         ╵                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-X [ERROR] ENOENT: no such file or directory, open 'D:\sideproject\MIS\frontend\src\views\repair\RepairList.vue' [plugin vite:dep-scan]
-
-    node_modules/esbuild/lib/main.js:1275:21:
-      1275 │         let result = await callback({
-           ╵                      ^
-
-    at async open (node:internal/fs/promises:639:25)
-    at async Object.readFile (node:internal/fs/promises:1243:14)
-    at async htmlTypeOnLoadCallback (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49701:19)
-    at async requestCallbacks.on-load (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1275:22)
-    at async handleRequest (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:647:11)
-
-  This error came from the "onLoad" callback registered here:
-
-    node_modules/esbuild/lib/main.js:1150:20:
-      1150 │       let promise = setup({
-           ╵                     ^
-
-    at setup (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49781:13)
-    at handlePlugins (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1150:21)
-    at buildOrContextImpl (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:873:5)
-    at Object.buildOrContext (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:699:5)
-    at D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:68
-    at new Promise (<anonymous>)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:2032:27)
-    at Object.context (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1874:58)
-    at prepareEsbuildScanner (file:///D:/sideproject/MIS/frontend/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49576:24)
-
-  The plugin "vite:dep-scan" was triggered by this import
-
-    src/router/index.js:43:28:
-      43 │     component: () => import('@/views/repair/RepairList.vue'),
-         ╵                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-    at failureErrorWithLog (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1472:15)
-    at D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:945:25
-    at runOnEndCallbacks (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:1315:45)
-    at buildResponseToResult (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:943:7)
-    at D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:955:9
-    at new Promise (<anonymous>)
-    at requestCallbacks.on-end (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:954:54)
-    at handleRequest (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:647:17)
-    at handleIncomingPacket (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:672:7)
-    at Socket.readFromStdout (D:\sideproject\MIS\frontend\node_modules\esbuild\lib\main.js:600:7)
+下午8:15:54 [vite] Internal server error: [postcss] Cannot find module '@tailwindcss/typography'
+Require stack:
+- D:\sideproject\MIS\frontend\tailwind.config.js
+  Plugin: vite:css
+  File: D:/sideproject/MIS/frontend/node_modules/floating-vue/dist/style.css:undefined:NaN
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1401:15)
+      at Function.resolve (node:internal/modules/helpers:145:19)
+      at _resolve (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:246378)
+      at jiti (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:249092)
+      at D:\sideproject\MIS\frontend\tailwind.config.js:130:5
+      at evalModule (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:251913)
+      at jiti (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:249841)
+      at D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\load-config.js:52:26
+      at loadConfig (D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\load-config.js:62:6)
+      at getTailwindConfig (D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\setupTrackingContext.js:71:116)
+下午8:15:54 [vite] Internal server error: [postcss] Cannot find module '@tailwindcss/typography'
+Require stack:
+- D:\sideproject\MIS\frontend\tailwind.config.js
+  Plugin: vite:css
+  File: D:/sideproject/MIS/frontend/node_modules/vue-toastification/dist/index.css:undefined:NaN
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1401:15)
+      at Function.resolve (node:internal/modules/helpers:145:19)
+      at _resolve (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:246378)
+      at jiti (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:249092)
+      at D:\sideproject\MIS\frontend\tailwind.config.js:130:5
+      at evalModule (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:251913)
+      at jiti (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:249841)
+      at D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\load-config.js:52:26
+      at loadConfig (D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\load-config.js:62:6)
+      at getTailwindConfig (D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\setupTrackingContext.js:71:116)
+下午8:15:54 [vite] Pre-transform error: [postcss] Cannot find module '@tailwindcss/typography'
+Require stack:
+- D:\sideproject\MIS\frontend\tailwind.config.js
+下午8:15:54 [vite] Pre-transform error: [postcss] Cannot find module '@tailwindcss/typography'
+Require stack:
+- D:\sideproject\MIS\frontend\tailwind.config.js (x2)
+下午8:15:54 [vite] Pre-transform error: [postcss] Cannot find module '@tailwindcss/typography'
+Require stack:
+- D:\sideproject\MIS\frontend\tailwind.config.js (x3)
+下午8:15:54 [vite] Internal server error: [postcss] Cannot find module '@tailwindcss/typography'
+Require stack:
+- D:\sideproject\MIS\frontend\tailwind.config.js
+  Plugin: vite:css
+  File: D:/sideproject/MIS/frontend/src/App.vue?vue&type=style&index=0&lang.css:undefined:NaN
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1401:15)
+      at Function.resolve (node:internal/modules/helpers:145:19)
+      at _resolve (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:246378)
+      at jiti (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:249092)
+      at D:\sideproject\MIS\frontend\tailwind.config.js:130:5
+      at evalModule (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:251913)
+      at jiti (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:249841)
+      at D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\load-config.js:52:26
+      at loadConfig (D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\load-config.js:62:6)
+      at getTailwindConfig (D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\setupTrackingContext.js:71:116)
+下午8:15:54 [vite] Internal server error: [postcss] Cannot find module '@tailwindcss/typography'
+Require stack:
+- D:\sideproject\MIS\frontend\tailwind.config.js
+  Plugin: vite:css
+  File: D:/sideproject/MIS/frontend/src/style.css:undefined:NaN
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1401:15)
+      at Function.resolve (node:internal/modules/helpers:145:19)
+      at _resolve (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:246378)
+      at jiti (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:249092)
+      at D:\sideproject\MIS\frontend\tailwind.config.js:130:5
+      at evalModule (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:251913)
+      at jiti (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:249841)
+      at D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\load-config.js:52:26
+      at loadConfig (D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\load-config.js:62:6)
+      at getTailwindConfig (D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\setupTrackingContext.js:71:116)
+下午8:15:54 [vite] Pre-transform error: [postcss] Cannot find module '@tailwindcss/typography'
+Require stack:
+- D:\sideproject\MIS\frontend\tailwind.config.js

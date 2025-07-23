@@ -24,7 +24,7 @@ class JWT
      */
     public static function encode(array $payload, int $expire = null): string
     {
-        if (!self::$secret) {
+        if (!isset(self::$secret)) {
             self::init();
         }
 

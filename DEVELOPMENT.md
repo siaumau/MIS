@@ -292,7 +292,7 @@ class ExampleController
     public function store(): void
     {
         $request = new Request();
-        
+
         // 驗證輸入
         $errors = $request->validate([
             'name' => 'required|max:100',
@@ -308,10 +308,10 @@ class ExampleController
 
         try {
             $id = $this->db->insert('example_table', $data);
-            
+
             // 記錄日誌
             $this->logAction('create', 'example', $id, null, $data);
-            
+
             Response::created(['id' => $id], '創建成功');
         } catch (\Exception $e) {
             Response::serverError('創建失敗：' . $e->getMessage());
@@ -344,10 +344,10 @@ class ExampleController
 
         try {
             $this->db->update('example_table', $data, 'id = ?', [$id]);
-            
+
             // 記錄日誌
             $this->logAction('update', 'example', $id, $existing, $data);
-            
+
             Response::updated(null, '更新成功');
         } catch (\Exception $e) {
             Response::serverError('更新失敗：' . $e->getMessage());
@@ -368,10 +368,10 @@ class ExampleController
 
         try {
             $this->db->delete('example_table', 'id = ?', [$id]);
-            
+
             // 記錄日誌
             $this->logAction('delete', 'example', $id, $existing);
-            
+
             Response::deleted('刪除成功');
         } catch (\Exception $e) {
             Response::serverError('刪除失敗：' . $e->getMessage());
@@ -384,7 +384,7 @@ class ExampleController
     private function logAction(string $action, string $module, int $targetId, ?array $oldData = null, ?array $newData = null): void
     {
         $request = new Request();
-        
+
         $this->db->insert('system_logs', [
             'user_id' => $GLOBALS['current_user']['id'],
             'action' => $action,
@@ -406,7 +406,7 @@ class ExampleController
 // 在認證路由群組中添加
 $router->group(['middleware' => 'AuthMiddleware'], function($router) {
     // 其他路由...
-    
+
     // 範例路由
     $router->get('/examples', 'ExampleController@index');
     $router->get('/examples/{id}', 'ExampleController@show');
@@ -439,16 +439,16 @@ class RateLimitMiddleware
         $request = new Request();
         $ip = $request->ip();
         $key = "rate_limit:$ip";
-        
+
         $db = Database::getInstance();
-        
+
         // 檢查當前請求數
         $current = $this->getCurrentRequests($ip);
-        
+
         if ($current >= $this->maxRequests) {
             Response::error('請求過於頻繁，請稍後再試', 429);
         }
-        
+
         // 記錄請求
         $this->recordRequest($ip);
     }
@@ -457,9 +457,9 @@ class RateLimitMiddleware
     {
         $db = Database::getInstance();
         $result = $db->fetch("
-            SELECT COUNT(*) as count 
-            FROM request_logs 
-            WHERE ip_address = ? 
+            SELECT COUNT(*) as count
+            FROM request_logs
+            WHERE ip_address = ?
             AND created_at > DATE_SUB(NOW(), INTERVAL ? SECOND)
         ", [$ip, $this->timeWindow]);
 
@@ -473,7 +473,7 @@ class RateLimitMiddleware
             'ip_address' => $ip,
             'created_at' => date('Y-m-d H:i:s')
         ]);
-        
+
         // 清理舊記錄
         $db->delete('request_logs', 'created_at < DATE_SUB(NOW(), INTERVAL ? SECOND)', [$this->timeWindow * 2]);
     }
@@ -506,9 +506,9 @@ class NotificationService
     public function sendRepairNotification(int $repairId, string $type): bool
     {
         $repair = $this->db->fetch("
-            SELECT rr.*, u.full_name, u.email 
-            FROM repair_requests rr 
-            JOIN users u ON rr.requester_id = u.id 
+            SELECT rr.*, u.full_name, u.email
+            FROM repair_requests rr
+            JOIN users u ON rr.requester_id = u.id
             WHERE rr.id = ?
         ", [$repairId]);
 
@@ -580,9 +580,9 @@ class NotificationService
     {
         // 這裡實現實際的郵件發送邏輯
         // 可以使用 PHPMailer 或其他郵件服務
-        
+
         $config = include __DIR__ . '/../../config/app.php';
-        
+
         $headers = [
             'From: ' . $config['mail']['from']['address'],
             'Content-Type: text/html; charset=UTF-8'
@@ -667,7 +667,7 @@ components/
           重新整理
         </Button>
       </div>
-      
+
       <!-- 搜尋框 -->
       <div class="w-96">
         <FormInput
@@ -732,10 +732,10 @@ components/
 import { ref, reactive, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
-import { 
-  PlusIcon, 
-  RefreshIcon, 
-  ExclamationIcon 
+import {
+  PlusIcon,
+  RefreshIcon,
+  ExclamationIcon
 } from '@heroicons/vue/24/outline'
 
 // 組件引入
@@ -785,7 +785,7 @@ const pagination = computed(() => exampleStore.pagination)
 const fetchData = async (params = {}) => {
   loading.value = true
   error.value = null
-  
+
   try {
     await exampleStore.fetchItems(params)
   } catch (err) {
@@ -808,7 +808,7 @@ const handleEdit = (item) => {
 
 const handleDelete = async (item) => {
   if (!confirm('確定要刪除此項目嗎？')) return
-  
+
   try {
     await exampleService.delete(item.id)
     await fetchData()
@@ -827,7 +827,7 @@ const handleSubmit = async (formData) => {
       await exampleService.create(formData)
       toast.success('創建成功')
     }
-    
+
     closeModal()
     await fetchData()
   } catch (error) {
@@ -849,7 +849,7 @@ const handleSearch = debounce(async (query) => {
 }, 300)
 
 const handleSort = async (column, direction) => {
-  await fetchData({ 
+  await fetchData({
     sort: column,
     direction: direction
   })
@@ -1018,7 +1018,7 @@ const handleSubmit = async () => {
   if (!validateForm()) return
 
   submitting.value = true
-  
+
   try {
     emit('submit', { ...form })
   } catch (error) {
@@ -1105,7 +1105,7 @@ export const useExampleStore = defineStore('example', {
 
       if (state.filters.search) {
         const search = state.filters.search.toLowerCase()
-        filtered = filtered.filter(item => 
+        filtered = filtered.filter(item =>
           item.name.toLowerCase().includes(search) ||
           item.email.toLowerCase().includes(search)
         )
@@ -1149,10 +1149,10 @@ export const useExampleStore = defineStore('example', {
 
       try {
         const response = await exampleService.getList(params)
-        
+
         this.items = response.data
         this.pagination = response.pagination
-        
+
         return response
       } catch (error) {
         this.error = error.message
@@ -1183,11 +1183,11 @@ export const useExampleStore = defineStore('example', {
     async createItem(data) {
       try {
         const response = await exampleService.create(data)
-        
+
         // 將新項目加入列表
         this.items.unshift(response.data)
         this.pagination.total++
-        
+
         return response
       } catch (error) {
         this.error = error.message
@@ -1199,18 +1199,18 @@ export const useExampleStore = defineStore('example', {
     async updateItem(id, data) {
       try {
         const response = await exampleService.update(id, data)
-        
+
         // 更新列表中的項目
         const index = this.items.findIndex(item => item.id === id)
         if (index !== -1) {
           this.items[index] = response.data
         }
-        
+
         // 更新當前項目
         if (this.currentItem && this.currentItem.id === id) {
           this.currentItem = response.data
         }
-        
+
         return response
       } catch (error) {
         this.error = error.message
@@ -1222,11 +1222,11 @@ export const useExampleStore = defineStore('example', {
     async deleteItem(id) {
       try {
         await exampleService.delete(id)
-        
+
         // 從列表中移除項目
         this.items = this.items.filter(item => item.id !== id)
         this.pagination.total--
-        
+
         // 清除當前項目
         if (this.currentItem && this.currentItem.id === id) {
           this.currentItem = null
@@ -1333,11 +1333,11 @@ class ExampleService {
    */
   async export(format = 'xlsx', filters = {}) {
     const params = { format, ...filters }
-    const response = await apiClient.get('/examples/export', { 
+    const response = await apiClient.get('/examples/export', {
       params,
       responseType: 'blob'
     })
-    
+
     // 創建下載連結
     const url = window.URL.createObjectURL(new Blob([response.data]))
     const link = document.createElement('a')
@@ -1492,7 +1492,7 @@ CREATE TABLE examples (
     created_by INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    
+
     INDEX idx_examples_status (status),
     INDEX idx_examples_created_at (created_at),
     FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
@@ -1523,24 +1523,24 @@ CREATE FULLTEXT INDEX ft_announcements_content ON security_announcements(title, 
 #### 查詢優化
 ```sql
 -- 使用 EXPLAIN 分析查詢
-EXPLAIN SELECT * FROM equipment 
-WHERE status = 'active' 
-AND department = 'IT' 
-ORDER BY created_at DESC 
+EXPLAIN SELECT * FROM equipment
+WHERE status = 'active'
+AND department = 'IT'
+ORDER BY created_at DESC
 LIMIT 20;
 
 -- 避免 SELECT *
 SELECT id, name, status FROM equipment WHERE status = 'active';
 
 -- 使用適當的 JOIN
-SELECT e.name, c.name as category_name 
-FROM equipment e 
+SELECT e.name, c.name as category_name
+FROM equipment e
 LEFT JOIN equipment_categories c ON e.category_id = c.id;
 
 -- 分頁查詢優化
-SELECT * FROM equipment 
-WHERE id > 1000 
-ORDER BY id 
+SELECT * FROM equipment
+WHERE id > 1000
+ORDER BY id
 LIMIT 20;
 ```
 
@@ -1594,7 +1594,7 @@ class ExampleControllerTest extends TestCase
         $output = ob_get_clean();
 
         $response = json_decode($output, true);
-        
+
         $this->assertTrue($response['success']);
         $this->assertCount(2, $response['data']);
     }
@@ -1617,7 +1617,7 @@ class ExampleControllerTest extends TestCase
         $output = ob_get_clean();
 
         $response = json_decode($output, true);
-        
+
         $this->assertTrue($response['success']);
         $this->assertEquals('創建成功', $response['message']);
     }
@@ -1636,8 +1636,8 @@ TOKEN=""
 login() {
     response=$(curl -s -X POST "$API_BASE/auth/login" \
         -H "Content-Type: application/json" \
-        -d '{"username":"admin","password":"admin123"}')
-    
+        -d '{"username":"admin","password":"password"}')
+
     TOKEN=$(echo $response | jq -r '.data.token')
     echo "Token: $TOKEN"
 }
@@ -1690,9 +1690,9 @@ describe('Button Component', () => {
 
   it('emits click event', async () => {
     const wrapper = mount(Button)
-    
+
     await wrapper.trigger('click')
-    
+
     expect(wrapper.emitted()).toHaveProperty('click')
   })
 
@@ -1717,7 +1717,7 @@ test.describe('Login Flow', () => {
     await page.goto('/login')
 
     await page.fill('input[name="username"]', 'admin')
-    await page.fill('input[name="password"]', 'admin123')
+    await page.fill('input[name="password"]', 'password')
     await page.click('button[type="submit"]')
 
     await expect(page).toHaveURL('/dashboard')
@@ -1767,7 +1767,7 @@ class ExampleController
     {
         $request = new Request();
         $page = (int) $request->input('page', 1);
-        
+
         if ($page < 1) {
             Response::error('Invalid page number');
             return;

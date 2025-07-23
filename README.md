@@ -146,18 +146,18 @@ icacls backend\logs /grant Everyone:F /T
 <VirtualHost *:80>
     DocumentRoot "C:/path/to/MIS/backend/public"
     ServerName mis-api.local
-    
+
     <Directory "C:/path/to/MIS/backend/public">
         AllowOverride All
         Require all granted
-        
+
         # 重寫規則
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-f
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteRule ^(.*)$ index.php [QSA,L]
     </Directory>
-    
+
     # PHP 設定
     php_value upload_max_filesize 10M
     php_value post_max_size 10M
@@ -215,7 +215,7 @@ npm run build
 #### 1. 預設管理員帳號
 ```
 用戶名：admin
-密碼：admin123
+密碼：password
 郵箱：admin@company.com
 ```
 
@@ -284,7 +284,7 @@ Content-Type: application/json
 
 {
   "username": "admin",
-  "password": "admin123"
+  "password": "password"
 }
 ```
 
@@ -440,13 +440,13 @@ npm run preview  # 預覽建置結果
 <template>
   <!-- 主要按鈕 -->
   <button class="btn btn-primary">確定</button>
-  
+
   <!-- 次要按鈕 -->
   <button class="btn btn-secondary">取消</button>
-  
+
   <!-- 危險按鈕 -->
   <button class="btn btn-danger">刪除</button>
-  
+
   <!-- 輪廓按鈕 -->
   <button class="btn btn-outline">編輯</button>
 </template>
@@ -457,8 +457,8 @@ npm run preview  # 預覽建置結果
 <template>
   <div class="form-group">
     <label class="form-label">設備名稱</label>
-    <input 
-      type="text" 
+    <input
+      type="text"
       v-model="form.name"
       class="form-control"
       placeholder="請輸入設備名稱"
@@ -527,7 +527,7 @@ export const useEquipmentStore = defineStore('equipment', {
     loading: false,
     error: null
   }),
-  
+
   actions: {
     async fetchEquipment() {
       this.loading = true
@@ -766,11 +766,11 @@ export const useExampleStore = defineStore('example', {
     loading: false,
     error: null
   }),
-  
+
   getters: {
     itemCount: (state) => state.items.length
   },
-  
+
   actions: {
     async fetchItems() {
       this.loading = true
