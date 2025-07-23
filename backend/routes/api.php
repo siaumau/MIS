@@ -66,6 +66,15 @@ $router->group(['middleware' => 'AuthMiddleware'], function($router) {
     $router->get('/equipment/export', 'EquipmentController@export');
 
     // ===========================
+    // 用戶管理
+    // ===========================
+    
+    // 用戶 CRUD（需要認證）
+    $router->get('/users/{id}', 'UserController@show');
+    $router->post('/users', 'UserController@store');
+    $router->put('/users/{id}', 'UserController@update');
+
+    // ===========================
     // 報修管理
     // ===========================
     

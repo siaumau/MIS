@@ -22,7 +22,7 @@ class UserController
     public function index()
     {
         try {
-            $sql = "SELECT id, username, full_name, department, position, office_location, extension, phone, role, status
+            $sql = "SELECT id, username, email, full_name, department, position, office_location, extension, phone, role, status
                     FROM users
                     WHERE status = 'active'
                     ORDER BY office_location, department, full_name";
@@ -55,23 +55,29 @@ class UserController
     public function show($id)
     {
         try {
-            $user = $this->db->query(
+            // 處理路由參數可能是數組的情況
+            $actualId = is_array($id) ? $id['id'] : $id;
+            $userId = (int)$actualId;
+            // error_log removed to avoid array to string conversion warning
+            
+            $stmt = $this->db->query(
                 "SELECT id, username, email, full_name, department, position, office_location, extension, phone, role, status, avatar, last_login, created_at, updated_at
                  FROM users
                  WHERE id = ?",
-                [$id]
+                [$userId]
             );
 
-            if (empty($user->fetchAll())) {
+            $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+            // error_log removed
+
+            if (!$userData) {
                 Response::json([
                     'success' => false,
                     'message' => '用戶不存在',
-                    'errors' => ['id' => '找不到指定的用戶']
+                    'errors' => ['id' => '找不到指定的用戶'],
                 ], 404);
                 return;
             }
-
-            $userData = $user->fetch(PDO::FETCH_ASSOC);
             $userData['office_location_text'] = $userData['office_location'] === 'taipei' ? '台北' : '彰化';
 
             Response::json([
@@ -183,8 +189,15 @@ class UserController
         try {
             $input = json_decode(file_get_contents('php://input'), true);
 
+            // 處理路由參數可能是數組的情況
+            $actualId = is_array($id) ? $id['id'] : $id;
+            $userId = (int)$actualId;
+            // error_log removed to avoid array to string conversion warning
+            
             // 檢查用戶是否存在
-            $existingUser = $this->db->query("SELECT id FROM users WHERE id = ?", [$id])->fetch();
+            $stmt = $this->db->query("SELECT id FROM users WHERE id = ?", [$userId]);
+            $existingUser = $stmt->fetch(PDO::FETCH_ASSOC);
+            // error_log removed
 
             if (!$existingUser) {
                 Response::json([
@@ -200,20 +213,21 @@ class UserController
                 'updated_at' => date('Y-m-d H:i:s')
             ];
 
-            $allowedFields = ['full_name', 'department', 'position', 'office_location', 'extension', 'phone', 'role', 'status'];
+            $allowedFields = ['email', 'full_name', 'department', 'position', 'office_location', 'extension', 'phone', 'role', 'status'];
             foreach ($allowedFields as $field) {
                 if (isset($input[$field])) {
                     $updateData[$field] = trim($input[$field]);
                 }
             }
 
-            $updated = $this->db->update('users', $updateData, "id = ?", [$id]);
+            $updated = $this->db->update('users', $updateData, "id = ?", [$userId]);
 
             if ($updated) {
-                $user = $this->db->query(
-                    "SELECT id, username, full_name, department, position, office_location, extension, phone, role, status FROM users WHERE id = ?",
-                    [$id]
-                )->fetch(PDO::FETCH_ASSOC);
+                $stmt = $this->db->query(
+                    "SELECT id, username, email, full_name, department, position, office_location, extension, phone, role, status FROM users WHERE id = ?",
+                    [$userId]
+                );
+                $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
                 Response::json([
                     'success' => true,

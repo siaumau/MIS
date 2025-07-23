@@ -7,9 +7,9 @@ namespace App\Core;
  */
 class JWT
 {
-    private static string $secret;
+    private static ?string $secret = null;
     private static string $algorithm = 'HS256';
-    private static int $expire;
+    private static ?int $expire = null;
 
     public static function init(): void
     {
@@ -24,7 +24,7 @@ class JWT
      */
     public static function encode(array $payload, int $expire = null): string
     {
-        if (!isset(self::$secret)) {
+        if (self::$secret === null) {
             self::init();
         }
 
@@ -50,7 +50,7 @@ class JWT
      */
     public static function decode(string $token): ?array
     {
-        if (!self::$secret) {
+        if (self::$secret === null) {
             self::init();
         }
 

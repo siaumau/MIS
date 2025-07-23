@@ -75,7 +75,7 @@ class Database
             $stmt->execute($params);
             return $stmt;
         } catch (PDOException $e) {
-            error_log("SQL Error: " . $e->getMessage() . " SQL: " . $sql);
+            error_log("SQL Error: " . $e->getMessage() . " SQL: " . $sql . " Params: " . json_encode($params));
             throw new PDOException("查詢執行失敗: " . $e->getMessage());
         }
     }

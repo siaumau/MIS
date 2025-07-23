@@ -270,7 +270,10 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { useAuthStore } from '@/stores/auth'
 import NavBar from '@/components/NavBar.vue'
+
+const authStore = useAuthStore()
 
 const users = ref([])
 const loading = ref(false)
@@ -312,7 +315,11 @@ const filteredUsers = computed(() => {
 const loadUsers = async () => {
   loading.value = true
   try {
-    const response = await fetch('http://192.168.0.234:40001/api/users')
+    const response = await fetch('http://192.168.0.234:40001/api/users', {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
     if (response.ok) {
       const data = await response.json()
       users.value = data.data || []
@@ -361,6 +368,7 @@ const saveUser = async () => {
     const response = await fetch(url, {
       method,
       headers: {
+        'Authorization': `Bearer ${authStore.token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(userForm.value)
