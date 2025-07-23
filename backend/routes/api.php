@@ -50,7 +50,11 @@ $router->group(['middleware' => 'AuthMiddleware'], function($router) {
     $router->delete('/equipment/{id}', 'EquipmentController@destroy');
     
     // 設備分類
-    $router->get('/equipment/categories', 'EquipmentController@categories');
+    $router->get('/categories', 'CategoryController@index');
+    $router->get('/categories/{id}', 'CategoryController@show');
+    $router->post('/categories', 'CategoryController@store');
+    $router->put('/categories/{id}', 'CategoryController@update');
+    $router->delete('/categories/{id}', 'CategoryController@destroy');
     
     // 設備匯入匯出
     $router->post('/equipment/import', 'EquipmentController@import');
