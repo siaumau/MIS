@@ -1,84 +1,13 @@
-(base) PS D:\sideproject\MIS\frontend> npm run dev
+categories	CORS 錯誤	fetch	EquipmentForm.vue:220	0.0 kB	16 毫秒
+1 項要求 (共 41 項)
+已轉移 0.0 kB/1.9 kB
+0.0 kB/2,382 kB 資源
+完成：344 毫秒
+DOMContentLoaded：217 毫秒
+載入：304 毫秒
+﻿
+EquipmentForm.vue:254 載入分類失敗: TypeError: Failed to fetch
+    at loadCategories (EquipmentForm.vue:220:28)
+    at EquipmentForm.vue:314:3
+﻿
 
-> mis-frontend@1.0.0 dev
-> vite
-
-
-  VITE v5.4.19  ready in 238 ms
-
-  ➜  Local:   http://localhost:40000/
-  ➜  Network: http://192.168.0.234:40000/
-  ➜  Network: http://172.19.80.1:40000/
-  ➜  press h + enter to show help
-下午8:15:54 [vite] Internal server error: [postcss] Cannot find module '@tailwindcss/typography'
-Require stack:
-- D:\sideproject\MIS\frontend\tailwind.config.js
-  Plugin: vite:css
-  File: D:/sideproject/MIS/frontend/node_modules/floating-vue/dist/style.css:undefined:NaN
-      at Function._resolveFilename (node:internal/modules/cjs/loader:1401:15)
-      at Function.resolve (node:internal/modules/helpers:145:19)
-      at _resolve (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:246378)
-      at jiti (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:249092)
-      at D:\sideproject\MIS\frontend\tailwind.config.js:130:5
-      at evalModule (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:251913)
-      at jiti (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:249841)
-      at D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\load-config.js:52:26
-      at loadConfig (D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\load-config.js:62:6)
-      at getTailwindConfig (D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\setupTrackingContext.js:71:116)
-下午8:15:54 [vite] Internal server error: [postcss] Cannot find module '@tailwindcss/typography'
-Require stack:
-- D:\sideproject\MIS\frontend\tailwind.config.js
-  Plugin: vite:css
-  File: D:/sideproject/MIS/frontend/node_modules/vue-toastification/dist/index.css:undefined:NaN
-      at Function._resolveFilename (node:internal/modules/cjs/loader:1401:15)
-      at Function.resolve (node:internal/modules/helpers:145:19)
-      at _resolve (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:246378)
-      at jiti (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:249092)
-      at D:\sideproject\MIS\frontend\tailwind.config.js:130:5
-      at evalModule (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:251913)
-      at jiti (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:249841)
-      at D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\load-config.js:52:26
-      at loadConfig (D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\load-config.js:62:6)
-      at getTailwindConfig (D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\setupTrackingContext.js:71:116)
-下午8:15:54 [vite] Pre-transform error: [postcss] Cannot find module '@tailwindcss/typography'
-Require stack:
-- D:\sideproject\MIS\frontend\tailwind.config.js
-下午8:15:54 [vite] Pre-transform error: [postcss] Cannot find module '@tailwindcss/typography'
-Require stack:
-- D:\sideproject\MIS\frontend\tailwind.config.js (x2)
-下午8:15:54 [vite] Pre-transform error: [postcss] Cannot find module '@tailwindcss/typography'
-Require stack:
-- D:\sideproject\MIS\frontend\tailwind.config.js (x3)
-下午8:15:54 [vite] Internal server error: [postcss] Cannot find module '@tailwindcss/typography'
-Require stack:
-- D:\sideproject\MIS\frontend\tailwind.config.js
-  Plugin: vite:css
-  File: D:/sideproject/MIS/frontend/src/App.vue?vue&type=style&index=0&lang.css:undefined:NaN
-      at Function._resolveFilename (node:internal/modules/cjs/loader:1401:15)
-      at Function.resolve (node:internal/modules/helpers:145:19)
-      at _resolve (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:246378)
-      at jiti (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:249092)
-      at D:\sideproject\MIS\frontend\tailwind.config.js:130:5
-      at evalModule (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:251913)
-      at jiti (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:249841)
-      at D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\load-config.js:52:26
-      at loadConfig (D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\load-config.js:62:6)
-      at getTailwindConfig (D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\setupTrackingContext.js:71:116)
-下午8:15:54 [vite] Internal server error: [postcss] Cannot find module '@tailwindcss/typography'
-Require stack:
-- D:\sideproject\MIS\frontend\tailwind.config.js
-  Plugin: vite:css
-  File: D:/sideproject/MIS/frontend/src/style.css:undefined:NaN
-      at Function._resolveFilename (node:internal/modules/cjs/loader:1401:15)
-      at Function.resolve (node:internal/modules/helpers:145:19)
-      at _resolve (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:246378)
-      at jiti (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:249092)
-      at D:\sideproject\MIS\frontend\tailwind.config.js:130:5
-      at evalModule (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:251913)
-      at jiti (D:\sideproject\MIS\frontend\node_modules\jiti\dist\jiti.js:1:249841)
-      at D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\load-config.js:52:26
-      at loadConfig (D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\load-config.js:62:6)
-      at getTailwindConfig (D:\sideproject\MIS\frontend\node_modules\tailwindcss\lib\lib\setupTrackingContext.js:71:116)
-下午8:15:54 [vite] Pre-transform error: [postcss] Cannot find module '@tailwindcss/typography'
-Require stack:
-- D:\sideproject\MIS\frontend\tailwind.config.js

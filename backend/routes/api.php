@@ -22,6 +22,10 @@ $router->get('/system/info', function() {
     ]);
 });
 
+// 設備分類（公開讀取）
+$router->get('/categories', 'CategoryController@index');
+$router->get('/categories/{id}', 'CategoryController@show');
+
 // ===========================
 // 需要認證的路由
 // ===========================
@@ -49,9 +53,7 @@ $router->group(['middleware' => 'AuthMiddleware'], function($router) {
     $router->put('/equipment/{id}', 'EquipmentController@update');
     $router->delete('/equipment/{id}', 'EquipmentController@destroy');
     
-    // 設備分類
-    $router->get('/categories', 'CategoryController@index');
-    $router->get('/categories/{id}', 'CategoryController@show');
+    // 設備分類管理（需要認證）
     $router->post('/categories', 'CategoryController@store');
     $router->put('/categories/{id}', 'CategoryController@update');
     $router->delete('/categories/{id}', 'CategoryController@destroy');

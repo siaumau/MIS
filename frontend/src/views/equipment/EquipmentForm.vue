@@ -198,7 +198,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import NavBar from '@/components/NavBar.vue'
@@ -219,7 +219,6 @@ const loadCategories = async () => {
   try {
     const response = await fetch('http://192.168.0.234:40001/api/categories', {
       headers: {
-        'Authorization': `Bearer ${authStore.token}`,
         'Content-Type': 'application/json'
       }
     })

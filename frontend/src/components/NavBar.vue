@@ -11,12 +11,12 @@
           </div>
           
           <!-- 主選單 -->
-          <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+          <div class="hidden xl:ml-8 xl:flex xl:space-x-6 xl:h-16">
             <!-- 儀表板 -->
             <router-link 
               to="/dashboard" 
               :class="isActiveRoute('/dashboard') ? activeClass : inactiveClass"
-              class="inline-flex items-center px-1 pt-1 text-sm font-medium"
+              class="flex items-center px-2 text-sm font-medium whitespace-nowrap h-16"
             >
               <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
@@ -26,22 +26,23 @@
             </router-link>
 
             <!-- 資產設備管理 -->
-            <div class="relative" @mouseenter="showDropdown = 'equipment'" @mouseleave="hideDropdown">
+            <div class="relative flex items-center h-16" @mouseenter="showDropdown = 'equipment'" @mouseleave="hideDropdown">
               <button 
                 :class="isActiveRoute('/equipment') ? activeClass : inactiveClass"
-                class="inline-flex items-center px-1 pt-1 text-sm font-medium"
+                class="flex items-center px-2 text-sm font-medium whitespace-nowrap h-16"
               >
                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
                 </svg>
-                資產設備
-                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span class="hidden lg:inline">資產設備</span>
+                <span class="lg:hidden">設備</span>
+                <svg class="w-3 h-3 ml-1 transition-transform duration-200" :class="showDropdown === 'equipment' ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </button>
               
               <!-- 設備管理下拉選單 -->
-              <div v-show="showDropdown === 'equipment'" class="absolute z-10 -ml-4 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+              <div v-show="showDropdown === 'equipment'" class="absolute top-full left-0 z-10 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                 <div class="py-1">
                   <router-link to="/equipment" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     <svg class="w-4 h-4 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,32 +70,34 @@
             <router-link 
               to="/topology" 
               :class="isActiveRoute('/topology') ? activeClass : inactiveClass"
-              class="inline-flex items-center px-1 pt-1 text-sm font-medium"
+              class="flex items-center px-2 text-sm font-medium whitespace-nowrap h-16"
             >
               <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
               </svg>
-              網路拓樸
+              <span class="hidden lg:inline">網路拓樸</span>
+              <span class="lg:hidden">拓樸</span>
             </router-link>
 
             <!-- 報修管理 -->
-            <div class="relative" @mouseenter="showDropdown = 'repairs'" @mouseleave="hideDropdown">
+            <div class="relative flex items-center h-16" @mouseenter="showDropdown = 'repairs'" @mouseleave="hideDropdown">
               <button 
                 :class="isActiveRoute('/repairs') ? activeClass : inactiveClass"
-                class="inline-flex items-center px-1 pt-1 text-sm font-medium"
+                class="flex items-center px-2 text-sm font-medium whitespace-nowrap h-16"
               >
                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
-                報修管理
-                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span class="hidden lg:inline">報修管理</span>
+                <span class="lg:hidden">報修</span>
+                <svg class="w-3 h-3 ml-1 transition-transform duration-200" :class="showDropdown === 'repairs' ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </button>
               
               <!-- 報修管理下拉選單 -->
-              <div v-show="showDropdown === 'repairs'" class="absolute z-10 -ml-4 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+              <div v-show="showDropdown === 'repairs'" class="absolute top-full left-0 z-10 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                 <div class="py-1">
                   <router-link to="/repairs" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     <svg class="w-4 h-4 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -113,22 +116,23 @@
             </div>
 
             <!-- 系統管理 -->
-            <div class="relative" @mouseenter="showDropdown = 'system'" @mouseleave="hideDropdown">
+            <div class="relative flex items-center h-16" @mouseenter="showDropdown = 'system'" @mouseleave="hideDropdown">
               <button 
                 :class="isActiveRoute('/accounts') || isActiveRoute('/vm-servers') || isActiveRoute('/payments') || isActiveRoute('/tracking') ? activeClass : inactiveClass"
-                class="inline-flex items-center px-1 pt-1 text-sm font-medium"
+                class="flex items-center px-2 text-sm font-medium whitespace-nowrap h-16"
               >
                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
                 </svg>
-                系統管理
-                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span class="hidden lg:inline">系統管理</span>
+                <span class="lg:hidden">管理</span>
+                <svg class="w-3 h-3 ml-1 transition-transform duration-200" :class="showDropdown === 'system' ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </button>
               
               <!-- 系統管理下拉選單 -->
-              <div v-show="showDropdown === 'system'" class="absolute z-10 -ml-4 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+              <div v-show="showDropdown === 'system'" class="absolute top-full left-0 z-10 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                 <div class="py-1">
                   <router-link to="/accounts" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     <svg class="w-4 h-4 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -162,19 +166,20 @@
             <router-link 
               to="/announcements" 
               :class="isActiveRoute('/announcements') ? activeClass : inactiveClass"
-              class="inline-flex items-center px-1 pt-1 text-sm font-medium"
+              class="flex items-center px-2 text-sm font-medium whitespace-nowrap h-16"
             >
               <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path>
               </svg>
-              資安佈達
+              <span class="hidden lg:inline">資安佈達</span>
+              <span class="lg:hidden">佈達</span>
             </router-link>
           </div>
         </div>
 
         <!-- 右側 - 使用者資訊和登出 -->
         <div class="flex items-center space-x-4">
-          <span class="text-gray-700">{{ user?.full_name || user?.username }}</span>
+          <span class="text-gray-700 hidden sm:block">{{ user?.full_name || user?.username || '用戶' }}</span>
           <div class="relative" @mouseenter="showUserMenu = true" @mouseleave="showUserMenu = false">
             <button class="text-gray-500 hover:text-gray-700 p-1">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -203,7 +208,7 @@
         </div>
 
         <!-- 手機版選單按鈕 -->
-        <div class="flex items-center sm:hidden">
+        <div class="flex items-center xl:hidden">
           <button @click="showMobileMenu = !showMobileMenu" class="text-gray-500 hover:text-gray-700">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -213,7 +218,7 @@
       </div>
 
       <!-- 手機版選單 -->
-      <div v-show="showMobileMenu" class="sm:hidden">
+      <div v-show="showMobileMenu" class="xl:hidden">
         <div class="pt-2 pb-3 space-y-1">
           <router-link to="/dashboard" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50">儀表板</router-link>
           <router-link to="/equipment" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50">資產設備</router-link>
@@ -254,8 +259,8 @@ const showUserMenu = ref(false)
 const showMobileMenu = ref(false)
 
 // 樣式類別
-const activeClass = 'border-indigo-500 text-gray-900 border-b-2'
-const inactiveClass = 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+const activeClass = 'border-indigo-500 text-indigo-600 border-b-2'
+const inactiveClass = 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 border-b-2'
 
 // 檢查當前路由是否為活動狀態
 const isActiveRoute = (path) => {
