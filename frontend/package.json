@@ -1,6 +1,7 @@
 {
   "name": "mis-frontend",
   "version": "1.0.0",
+  "type": "module",
   "description": "IT資產與報修管理系統前端",
   "main": "index.js",
   "scripts": {
