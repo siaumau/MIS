@@ -26,6 +26,9 @@ $router->get('/system/info', function() {
 $router->get('/categories', 'CategoryController@index');
 $router->get('/categories/{id}', 'CategoryController@show');
 
+// 用戶列表（公開讀取，用於下拉選單）
+$router->get('/users', 'UserController@index');
+
 // ===========================
 // 需要認證的路由
 // ===========================
