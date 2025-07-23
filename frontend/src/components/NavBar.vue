@@ -9,12 +9,12 @@
               MIS 管理系統
             </router-link>
           </div>
-          
+
           <!-- 主選單 -->
           <div class="hidden xl:ml-8 xl:flex xl:space-x-6 xl:h-16">
             <!-- 儀表板 -->
-            <router-link 
-              to="/dashboard" 
+            <router-link
+              to="/dashboard"
               :class="isActiveRoute('/dashboard') ? activeClass : inactiveClass"
               class="flex items-center px-2 text-sm font-medium whitespace-nowrap h-16"
             >
@@ -27,7 +27,7 @@
 
             <!-- 資產設備管理 -->
             <div class="relative flex items-center h-16" @mouseenter="showDropdown = 'equipment'" @mouseleave="hideDropdown">
-              <button 
+              <button
                 :class="isActiveRoute('/equipment') ? activeClass : inactiveClass"
                 class="flex items-center px-2 text-sm font-medium whitespace-nowrap h-16"
               >
@@ -40,7 +40,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </button>
-              
+
               <!-- 設備管理下拉選單 -->
               <div v-show="showDropdown === 'equipment'" class="absolute top-full left-0 z-10 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                 <div class="py-1">
@@ -67,8 +67,8 @@
             </div>
 
             <!-- 網路拓樸管理 -->
-            <router-link 
-              to="/topology" 
+            <router-link
+              to="/topology"
               :class="isActiveRoute('/topology') ? activeClass : inactiveClass"
               class="flex items-center px-2 text-sm font-medium whitespace-nowrap h-16"
             >
@@ -81,7 +81,7 @@
 
             <!-- 報修管理 -->
             <div class="relative flex items-center h-16" @mouseenter="showDropdown = 'repairs'" @mouseleave="hideDropdown">
-              <button 
+              <button
                 :class="isActiveRoute('/repairs') ? activeClass : inactiveClass"
                 class="flex items-center px-2 text-sm font-medium whitespace-nowrap h-16"
               >
@@ -95,7 +95,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </button>
-              
+
               <!-- 報修管理下拉選單 -->
               <div v-show="showDropdown === 'repairs'" class="absolute top-full left-0 z-10 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                 <div class="py-1">
@@ -117,8 +117,8 @@
 
             <!-- 系統管理 -->
             <div class="relative flex items-center h-16" @mouseenter="showDropdown = 'system'" @mouseleave="hideDropdown">
-              <button 
-                :class="isActiveRoute('/accounts') || isActiveRoute('/vm-servers') || isActiveRoute('/payments') || isActiveRoute('/tracking') ? activeClass : inactiveClass"
+              <button
+                :class="isActiveRoute('/users/manage') || isActiveRoute('/vm-servers') || isActiveRoute('/payments') || isActiveRoute('/tracking') ? activeClass : inactiveClass"
                 class="flex items-center px-2 text-sm font-medium whitespace-nowrap h-16"
               >
                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -130,11 +130,11 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </button>
-              
+
               <!-- 系統管理下拉選單 -->
               <div v-show="showDropdown === 'system'" class="absolute top-full left-0 z-10 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                 <div class="py-1">
-                  <router-link to="/accounts" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <router-link to="/users/manage" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     <svg class="w-4 h-4 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
                     </svg>
@@ -163,8 +163,8 @@
             </div>
 
             <!-- 資訊安全佈達 -->
-            <router-link 
-              to="/announcements" 
+            <router-link
+              to="/announcements"
               :class="isActiveRoute('/announcements') ? activeClass : inactiveClass"
               class="flex items-center px-2 text-sm font-medium whitespace-nowrap h-16"
             >
@@ -186,7 +186,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
               </svg>
             </button>
-            
+
             <!-- 使用者下拉選單 -->
             <div v-show="showUserMenu" class="absolute right-0 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
               <div class="py-1">
@@ -224,7 +224,7 @@
           <router-link to="/equipment" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50">資產設備</router-link>
           <router-link to="/topology" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50">網路拓樸</router-link>
           <router-link to="/repairs" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50">報修管理</router-link>
-          <router-link to="/accounts" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50">帳號管理</router-link>
+          <router-link to="/users/manage" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50">帳號管理</router-link>
           <router-link to="/vm-servers" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50">VM伺服器</router-link>
           <router-link to="/payments" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50">定期付費</router-link>
           <router-link to="/tracking" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50">追蹤碼管理</router-link>
