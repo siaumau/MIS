@@ -127,6 +127,11 @@ class Router
     {
         $method = $_SERVER['REQUEST_METHOD'];
         $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        
+        // 移除 /api 前綴（如果存在）
+        if (strpos($path, '/api') === 0) {
+            $path = substr($path, 4) ?: '/';
+        }
 
         // 處理 CORS
         $this->handleCors($method);

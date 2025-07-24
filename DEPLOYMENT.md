@@ -118,29 +118,29 @@ sudo nano /etc/apache2/sites-available/mis-api.conf
 <VirtualHost *:80>
     ServerName api.your-domain.com
     DocumentRoot /var/www/mis/backend/public
-    
+
     <Directory /var/www/mis/backend/public>
         AllowOverride All
         Require all granted
-        
+
         # URL 重寫
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-f
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteRule ^(.*)$ index.php [QSA,L]
     </Directory>
-    
+
     # PHP 設定
     php_admin_value upload_max_filesize 10M
     php_admin_value post_max_size 10M
     php_admin_value max_execution_time 300
     php_admin_value memory_limit 256M
-    
+
     # 安全標頭
     Header always set X-Frame-Options DENY
     Header always set X-Content-Type-Options nosniff
     Header always set X-XSS-Protection "1; mode=block"
-    
+
     ErrorLog ${APACHE_LOG_DIR}/mis-api-error.log
     CustomLog ${APACHE_LOG_DIR}/mis-api-access.log combined
 </VirtualHost>
@@ -155,29 +155,29 @@ sudo nano /etc/apache2/sites-available/mis-frontend.conf
 <VirtualHost *:80>
     ServerName your-domain.com
     DocumentRoot /var/www/mis-frontend
-    
+
     <Directory /var/www/mis-frontend>
         AllowOverride All
         Require all granted
-        
+
         # SPA 路由支援
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-f
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteRule . /index.html [L]
     </Directory>
-    
+
     # 快取設定
     <LocationMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg)$">
         ExpiresActive On
         ExpiresDefault "access plus 1 month"
     </LocationMatch>
-    
+
     # Gzip 壓縮
     <IfModule mod_deflate.c>
         AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json
     </IfModule>
-    
+
     ErrorLog ${APACHE_LOG_DIR}/mis-frontend-error.log
     CustomLog ${APACHE_LOG_DIR}/mis-frontend-access.log combined
 </VirtualHost>
@@ -670,7 +670,7 @@ curl -I http://localhost:40000
 # 測試 API
 curl -X POST http://localhost:9000/api/auth/login \
   -H "Content-Type: application/json" \
-  -d '{"username":"admin","password":"admin123"}'
+  -d '{"username":"admin","password":"password"}'
 
 # 測試檔案上傳
 curl -X POST http://localhost:9000/api/upload/test \

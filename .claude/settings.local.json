@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(npm install:*)",
+      "Bash(rm:*)",
+      "Bash(npm run dev:*)",
+      "Bash(php:*)",
+      "Bash(copy .env.example .env)",
+      "Bash(cp:*)",
+      "Bash(mysql:*)",
+      "Bash(sqlite3:*)",
+      "Bash(ls:*)",
+      "Bash(curl:*)",
+      "Bash(where mysql)",
+      "Bash(\"C:\\Program Files\\MySQL\\MySQL Server 8.0\\bin\\mysql.exe\" -u root -e \"SHOW DATABASES;\")",
+      "Bash(\"C:\\xampp\\mysql\\bin\\mysql.exe\" -u root -e \"CREATE DATABASE IF NOT EXISTS mis_system CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;\")",
+      "Bash(\"C:\\xampp\\mysql\\bin\\mysql.exe\" -u root -e \"USE mis_system; SELECT COUNT(*) as user_count FROM users;\")",
+      "Bash(\"C:\\xampp\\mysql\\bin\\mysql.exe\" -u root -e \"SHOW DATABASES;\")",
+      "Bash(\"C:\\xampp\\mysql\\bin\\mysql.exe\" -u root -e \"USE mis_system; SHOW TABLES;\")",
+      "Bash(\"C:\\xampp\\mysql\\bin\\mysql.exe\" -u root -e \"USE mis_system; SHOW TABLES; SELECT username FROM users LIMIT 1;\")",
+      "Bash(\"C:\\xampp\\mysql\\bin\\mysql.exe\" -u root -e \"USE mis_system; SELECT username, full_name FROM users;\")",
+      "Bash(\"C:\\xampp\\mysql\\bin\\mysql.exe\" -u root -e \"SELECT VERSION();\")",
+      "Bash(\"C:\\xampp\\mysql\\bin\\mysql.exe\" -u root -e \"DROP DATABASE IF EXISTS mis_system; CREATE DATABASE mis_system CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; USE mis_system; CREATE TABLE users (id INT PRIMARY KEY AUTO_INCREMENT, username VARCHAR(50) UNIQUE NOT NULL, email VARCHAR(100) UNIQUE NOT NULL, password_hash VARCHAR(255) NOT NULL, full_name VARCHAR(100) NOT NULL, role ENUM(''admin'', ''user'') DEFAULT ''user'', created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP); INSERT INTO users (username, email, password_hash, full_name, role) VALUES (''admin'', ''admin@company.com'', ''$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'', ''系統管理員'', ''admin''); SELECT * FROM users;\")",
+      "Bash(\"C:\\xampp\\mysql\\bin\\mysql.exe\" -u root -e \"USE mis_system; ALTER TABLE users ADD COLUMN department VARCHAR(50) AFTER full_name, ADD COLUMN position VARCHAR(50) AFTER department, ADD COLUMN phone VARCHAR(20) AFTER position, ADD COLUMN status ENUM(''active'', ''inactive'') DEFAULT ''active'' AFTER role, ADD COLUMN avatar VARCHAR(255) AFTER status, ADD COLUMN last_login TIMESTAMP NULL AFTER avatar, ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER created_at;\")",
+      "Bash(\"C:\\xampp\\mysql\\bin\\mysql.exe\" -u root -e \"USE mis_system; CREATE TABLE system_logs (id INT PRIMARY KEY AUTO_INCREMENT, user_id INT, action VARCHAR(50) NOT NULL, module VARCHAR(50) NOT NULL, target_id INT, old_data TEXT, new_data TEXT, ip_address VARCHAR(45), user_agent TEXT, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (user_id) REFERENCES users(id));\")",
+      "Bash(taskkill:*)"
+    ],
+    "deny": []
+  }
+}

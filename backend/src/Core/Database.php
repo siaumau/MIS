@@ -30,19 +30,28 @@ class Database
 
     private function connect(): void
     {
-        $config = $this->config['connections']['mysql'];
+        $defaultConnection = $this->config['default'];
+        $config = $this->config['connections'][$defaultConnection];
         
-        $dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['database']};charset={$config['charset']}";
-        
-        try {
-            $this->connection = new PDO(
-                $dsn,
-                $config['username'],
-                $config['password'],
-                $config['options']
-            );
-        } catch (PDOException $e) {
-            throw new PDOException("資料庫連接失敗: " . $e->getMessage());
+        if ($defaultConnection === 'sqlite') {
+            $dsn = "sqlite:{$config['database']}";
+            try {
+                $this->connection = new PDO($dsn, null, null, $config['options']);
+            } catch (PDOException $e) {
+                throw new PDOException("資料庫連接失敗: " . $e->getMessage());
+            }
+        } else {
+            $dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['database']};charset={$config['charset']}";
+            try {
+                $this->connection = new PDO(
+                    $dsn,
+                    $config['username'],
+                    $config['password'],
+                    $config['options']
+                );
+            } catch (PDOException $e) {
+                throw new PDOException("資料庫連接失敗: " . $e->getMessage());
+            }
         }
     }
 
@@ -66,7 +75,7 @@ class Database
             $stmt->execute($params);
             return $stmt;
         } catch (PDOException $e) {
-            error_log("SQL Error: " . $e->getMessage() . " SQL: " . $sql);
+            error_log("SQL Error: " . $e->getMessage() . " SQL: " . $sql . " Params: " . json_encode($params));
             throw new PDOException("查詢執行失敗: " . $e->getMessage());
         }
     }
@@ -96,11 +105,11 @@ class Database
     public function insert(string $table, array $data): int
     {
         $columns = array_keys($data);
-        $placeholders = array_map(fn($col) => ":$col", $columns);
+        $placeholders = array_fill(0, count($columns), '?');
         
         $sql = "INSERT INTO `$table` (`" . implode('`, `', $columns) . "`) VALUES (" . implode(', ', $placeholders) . ")";
         
-        $this->query($sql, $data);
+        $this->query($sql, array_values($data));
         return (int)$this->connection->lastInsertId();
     }
 
@@ -110,11 +119,11 @@ class Database
     public function update(string $table, array $data, string $where, array $whereParams = []): int
     {
         $columns = array_keys($data);
-        $setParts = array_map(fn($col) => "`$col` = :$col", $columns);
+        $setParts = array_map(fn($col) => "`$col` = ?", $columns);
         
         $sql = "UPDATE `$table` SET " . implode(', ', $setParts) . " WHERE $where";
         
-        $params = array_merge($data, $whereParams);
+        $params = array_merge(array_values($data), $whereParams);
         $stmt = $this->query($sql, $params);
         
         return $stmt->rowCount();

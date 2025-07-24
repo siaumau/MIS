@@ -445,7 +445,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 -- 初始數據
 -- ===========================
 
--- 插入預設管理員帳號 (密碼: admin123)
+-- 插入預設管理員帳號 (密碼: password)
 INSERT INTO users (username, email, password_hash, full_name, department, position, role, status) VALUES
 ('admin', 'admin@company.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '系統管理員', 'IT部', '系統管理員', 'admin', 'active'),
 ('mis_user', 'mis@company.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'MIS專員', 'IT部', 'MIS專員', 'user', 'active');

@@ -9,7 +9,7 @@
           IT資產與報修管理系統
         </p>
       </div>
-      
+
       <form class="mt-8 space-y-6" @submit.prevent="handleLogin">
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
@@ -54,7 +54,7 @@
         </div>
 
         <div class="text-center text-sm text-gray-500">
-          <p>預設管理員帳號：admin / admin123</p>
+          <p>預設管理員帳號：admin / password</p>
         </div>
       </form>
     </div>

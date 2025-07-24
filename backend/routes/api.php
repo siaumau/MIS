@@ -22,6 +22,13 @@ $router->get('/system/info', function() {
     ]);
 });
 
+// 設備分類（公開讀取）
+$router->get('/categories', 'CategoryController@index');
+$router->get('/categories/{id}', 'CategoryController@show');
+
+// 用戶列表（公開讀取，用於下拉選單）
+$router->get('/users', 'UserController@index');
+
 // ===========================
 // 需要認證的路由
 // ===========================
@@ -49,12 +56,23 @@ $router->group(['middleware' => 'AuthMiddleware'], function($router) {
     $router->put('/equipment/{id}', 'EquipmentController@update');
     $router->delete('/equipment/{id}', 'EquipmentController@destroy');
     
-    // 設備分類
-    $router->get('/equipment/categories', 'EquipmentController@categories');
+    // 設備分類管理（需要認證）
+    $router->post('/categories', 'CategoryController@store');
+    $router->put('/categories/{id}', 'CategoryController@update');
+    $router->delete('/categories/{id}', 'CategoryController@destroy');
     
     // 設備匯入匯出
     $router->post('/equipment/import', 'EquipmentController@import');
     $router->get('/equipment/export', 'EquipmentController@export');
+
+    // ===========================
+    // 用戶管理
+    // ===========================
+    
+    // 用戶 CRUD（需要認證）
+    $router->get('/users/{id}', 'UserController@show');
+    $router->post('/users', 'UserController@store');
+    $router->put('/users/{id}', 'UserController@update');
 
     // ===========================
     // 報修管理

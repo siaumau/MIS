@@ -32,6 +32,12 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
+    path: '/equipment/categories',
+    name: 'EquipmentCategories',
+    component: () => import('@/views/equipment/EquipmentCategories.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
     path: '/equipment/:id',
     name: 'EquipmentDetail',
     component: () => import('@/views/equipment/EquipmentDetail.vue'),
@@ -65,6 +71,12 @@ const routes = [
     path: '/announcements/:id',
     name: 'AnnouncementDetail',
     component: () => import('@/views/announcement/AnnouncementDetail.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/users/manage',
+    name: 'UserManage',
+    component: () => import('@/views/users/UserManage.vue'),
     meta: { requiresAuth: true }
   },
   {
