@@ -1,10 +1,25 @@
 import axios from 'axios'
 import { useAuthStore } from '@/stores/auth'
 import { useToast } from 'vue-toastification'
+import { buildApiUrl } from './ipHelper'
+
+// 動態獲取 API 基礎 URL
+let baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:9000/api'
+
+// 如果配置為使用動態 IP，則獲取本機 IP
+if (import.meta.env.VITE_USE_DYNAMIC_IP === 'true') {
+  buildApiUrl(8000, '/api').then(url => {
+    baseURL = url
+    apiClient.defaults.baseURL = url
+    console.log('API Base URL updated to:', url)
+  }).catch(error => {
+    console.warn('Failed to get dynamic IP, using default:', error)
+  })
+}
 
 // 創建 axios 實例
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:9000/api',
+  baseURL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

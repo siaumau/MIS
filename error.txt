@@ -1,13 +1,14 @@
-categories	CORS 錯誤	fetch	EquipmentForm.vue:220	0.0 kB	16 毫秒
-1 項要求 (共 41 項)
-已轉移 0.0 kB/1.9 kB
-0.0 kB/2,382 kB 資源
-完成：344 毫秒
-DOMContentLoaded：217 毫秒
-載入：304 毫秒
-﻿
-EquipmentForm.vue:254 載入分類失敗: TypeError: Failed to fetch
-    at loadCategories (EquipmentForm.vue:220:28)
-    at EquipmentForm.vue:314:3
-﻿
+請求
+http://localhost:8000/api/users/6
 
+使用 put 回應500
+
+
+response 
+{
+    "success": false,
+    "message": "用戶更新失敗",
+    "errors": [
+        "查詢執行失敗: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'eric.lai@paulaschoice.com.tw' for key 'email'"
+    ]
+}

@@ -215,7 +215,7 @@ const categories = ref([])
 const loadCategories = async () => {
   loading.value = true
   try {
-    const response = await fetch('http://192.168.0.234:40001/api/categories', {
+    const response = await fetch('http://192.168.2.56:40001/api/categories', {
       headers: {
         'Authorization': `Bearer ${authStore.token}`,
         'Content-Type': 'application/json'
@@ -240,7 +240,7 @@ const addCategory = async () => {
   
   saving.value = true
   try {
-    const response = await fetch('http://192.168.0.234:40001/api/categories', {
+    const response = await fetch('http://192.168.2.56:40001/api/categories', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${authStore.token}`,
@@ -279,7 +279,7 @@ const updateCategory = async () => {
   
   saving.value = true
   try {
-    const response = await fetch(`http://192.168.0.234:40001/api/categories/${editingCategory.value.id}`, {
+    const response = await fetch(`http://192.168.2.56:40001/api/categories/${editingCategory.value.id}`, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${authStore.token}`,
@@ -322,7 +322,7 @@ const deleteCategory = async (category) => {
   }
   
   try {
-    const response = await fetch(`http://192.168.0.234:40001/api/categories/${category.id}`, {
+    const response = await fetch(`http://192.168.2.56:40001/api/categories/${category.id}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${authStore.token}`,

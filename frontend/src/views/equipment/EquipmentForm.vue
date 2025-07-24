@@ -237,6 +237,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
+import { api } from '@/utils/apiClient'
 import NavBar from '@/components/NavBar.vue'
 
 const router = useRouter()
@@ -257,7 +258,7 @@ const users = ref([])
 const loadCategories = async () => {
   categoriesLoading.value = true
   try {
-    const response = await fetch('http://192.168.0.234:40001/api/categories', {
+    const response = await fetch('http://192.168.2.56:40001/api/categories', {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -321,11 +322,7 @@ const loadCategories = async () => {
 const loadUsers = async () => {
   usersLoading.value = true
   try {
-    const response = await fetch('http://192.168.0.234:40001/api/users', {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    const response = await api.get('/users')
 
     if (response.ok) {
       const data = await response.json()

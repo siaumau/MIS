@@ -29,6 +29,14 @@
               <option value="">全部部門</option>
               <option v-for="dept in departments" :key="dept" :value="dept">{{ dept }}</option>
             </select>
+            <select 
+              v-model="filterStatus"
+              class="border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            >
+              <option value="">全部狀態</option>
+              <option value="active">啟用</option>
+              <option value="inactive">停用</option>
+            </select>
           </div>
           <button 
             @click="showAddUserModal = true"
@@ -271,6 +279,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useAuthStore } from '@/stores/auth'
+import { api } from '@/utils/apiClient'
 import NavBar from '@/components/NavBar.vue'
 
 const authStore = useAuthStore()
@@ -282,6 +291,7 @@ const showAddUserModal = ref(false)
 const editingUser = ref(null)
 const filterLocation = ref('')
 const filterDepartment = ref('')
+const filterStatus = ref('')
 
 const userForm = ref({
   username: '',
@@ -307,7 +317,8 @@ const filteredUsers = computed(() => {
   return users.value.filter(user => {
     const locationMatch = !filterLocation.value || user.office_location === filterLocation.value
     const departmentMatch = !filterDepartment.value || user.department === filterDepartment.value
-    return locationMatch && departmentMatch
+    const statusMatch = !filterStatus.value || user.status === filterStatus.value
+    return locationMatch && departmentMatch && statusMatch
   })
 })
 
@@ -315,15 +326,9 @@ const filteredUsers = computed(() => {
 const loadUsers = async () => {
   loading.value = true
   try {
-    const response = await fetch('http://192.168.0.234:40001/api/users', {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    if (response.ok) {
-      const data = await response.json()
-      users.value = data.data || []
-    }
+    const response = await api.get('/users')
+    const data = response.data
+    users.value = data.data || []
   } catch (error) {
     console.error('載入用戶失敗:', error)
   } finally {
@@ -359,32 +364,45 @@ const closeModal = () => {
 const saveUser = async () => {
   saving.value = true
   try {
-    const url = editingUser.value 
-      ? `http://192.168.0.234:40001/api/users/${editingUser.value.id}`
-      : 'http://192.168.0.234:40001/api/users'
+    // 記錄操作類型，因為 closeModal 會清空 editingUser
+    const isEdit = !!editingUser.value
     
-    const method = editingUser.value ? 'PUT' : 'POST'
-    
-    const response = await fetch(url, {
-      method,
-      headers: {
-        'Authorization': `Bearer ${authStore.token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userForm.value)
-    })
-    
-    if (response.ok) {
-      await loadUsers()
-      closeModal()
+    if (editingUser.value) {
+      await api.put(`/users/${editingUser.value.id}`, userForm.value)
     } else {
-      const error = await response.json()
-      console.error('儲存用戶失敗:', error)
-      alert('儲存失敗: ' + (error.message || '未知錯誤'))
+      await api.post('/users', userForm.value)
     }
+    await loadUsers()
+    closeModal()
+    
+    // 顯示成功訊息
+    const action = isEdit ? '更新' : '新增'
+    alert(`${action}用戶成功！`)
   } catch (error) {
     console.error('儲存用戶失敗:', error)
-    alert('儲存失敗: ' + error.message)
+    
+    // 處理不同類型的錯誤
+    if (error.response && error.response.data) {
+      const errorData = error.response.data
+      let errorMessage = '儲存失敗'
+      
+      if (errorData.errors && errorData.errors.length > 0) {
+        const firstError = errorData.errors[0]
+        if (firstError.includes('Duplicate entry') && firstError.includes('email')) {
+          errorMessage = '此電子郵件地址已被其他用戶使用，請使用不同的電子郵件地址'
+        } else if (firstError.includes('Duplicate entry') && firstError.includes('username')) {
+          errorMessage = '此用戶名已存在，請使用不同的用戶名'
+        } else {
+          errorMessage = errorData.message || firstError
+        }
+      } else {
+        errorMessage = errorData.message || '儲存失敗，請稍後再試'
+      }
+      
+      alert(errorMessage)
+    } else {
+      alert('儲存失敗: ' + error.message)
+    }
   } finally {
     saving.value = false
   }

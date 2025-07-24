@@ -76,6 +76,8 @@ php-imagick (圖片處理)
 ```bash
 git clone [repository-url]
 cd MIS/backend
+
+php -S 0.0.0.0:8000 -t public
 ```
 
 #### 2. 建立資料庫
