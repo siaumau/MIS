@@ -1,14 +1,65 @@
-請求
-http://localhost:8000/api/users/6
-
-使用 put 回應500
+Controller App\Controllers\PaymentController not found
 
 
-response 
+
+http://localhost:8000/api/payments  POST請求 500 Internal Server Error
+
+payload 
+{
+    "item_number": 1,
+    "name": "paulaschoice-tw.com",
+    "vendor": "中華電信",
+    "purchase_url": "",
+    "account_info": "test\ntest",
+    "start_date": "2025-07-25",
+    "end_date": "2025-10-25",
+    "billing_cycle": "年",
+    "payment_method": "個人先支出",
+    "amount_usd": null,
+    "amount_twd": 1000,
+    "status": "active",
+    "notes": ""
+}
+
+
+response
+
 {
     "success": false,
-    "message": "用戶更新失敗",
-    "errors": [
-        "查詢執行失敗: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'eric.lai@paulaschoice.com.tw' for key 'email'"
-    ]
+    "message": "Controller App\\Controllers\\PaymentController not found",
+    "errors": null
 }
+
+
+console錯誤
+
+[API Request 1753416648605] {method: 'POST', url: '/payments', params: undefined, data: {…}}
+apiClient.js:138  POST http://localhost:8000/api/payments 500 (Internal Server Error)
+dispatchXhrRequest @ axios.js?v=402cb314:1651
+xhr @ axios.js?v=402cb314:1531
+dispatchRequest @ axios.js?v=402cb314:2006
+Promise.then
+_request @ axios.js?v=402cb314:2209
+request @ axios.js?v=402cb314:2118
+httpMethod @ axios.js?v=402cb314:2256
+wrap @ axios.js?v=402cb314:8
+post @ apiClient.js:138
+savePayment @ PaymentManage.vue:520
+cache.<computed>.cache.<computed> @ chunk-VZXQDS5F.js?v=402cb314:12237
+callWithErrorHandling @ chunk-VZXQDS5F.js?v=402cb314:2272
+callWithAsyncErrorHandling @ chunk-VZXQDS5F.js?v=402cb314:2279
+invoker @ chunk-VZXQDS5F.js?v=402cb314:11271Understand this error
+apiClient.js:69 [API Error 1753416648605] {status: 500, data: {…}, message: 'Request failed with status code 500'}
+(anonymous) @ apiClient.js:69
+Promise.then
+_request @ axios.js?v=402cb314:2209
+request @ axios.js?v=402cb314:2118
+httpMethod @ axios.js?v=402cb314:2256
+wrap @ axios.js?v=402cb314:8
+post @ apiClient.js:138
+savePayment @ PaymentManage.vue:520
+cache.<computed>.cache.<computed> @ chunk-VZXQDS5F.js?v=402cb314:12237
+callWithErrorHandling @ chunk-VZXQDS5F.js?v=402cb314:2272
+callWithAsyncErrorHandling @ chunk-VZXQDS5F.js?v=402cb314:2279
+invoker @ chunk-VZXQDS5F.js?v=402cb314:11271Understand this error
+PaymentManage.vue:528 儲存付款記錄失敗: AxiosError {message: 'Request failed with status code 500', name: 'AxiosError', code: 'ERR_BAD_RESPONSE', config: {…}, request: XMLHttpRequest, …}
