@@ -80,6 +80,12 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
+    path: '/payments',
+    name: 'Payments',
+    component: () => import('@/views/payments/PaymentManage.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
     path: '/profile',
     name: 'Profile',
     component: () => import('@/views/auth/ProfilePage.vue'),

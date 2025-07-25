@@ -24,9 +24,8 @@ class UserController
         try {
             $sql = "SELECT id, username, email, full_name, department, position, office_location, extension, phone, role, status
                     FROM users
-                    WHERE status = 'active'
+                   
                     ORDER BY office_location, department, full_name";
-
             $stmt = $this->db->query($sql);
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
